@@ -4,7 +4,8 @@
     {
         string Name { get; set; }
         int Id { get; set; }
-        IWeekendConfiguration Weekend { get; set; }
+        DayOfWeek StartDay { get; set; }
+        DayOfWeek EndDay { get; set; }
 
     }
 }

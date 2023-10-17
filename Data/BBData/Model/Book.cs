@@ -7,25 +7,25 @@ namespace BBData.Model
 {
     public class Book : IBook
     {
-        public Book(IBook book)
-        {
-            Id = book.Id;
-            Title = book.Title;        
-            ISBN = book.ISBN;
-        }
+
         public Book()
         {
 
         }
+
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 
         public int Id { get; set; }
         public string Title { get; set; } = "";
-      
+
         public string ISBN { get; set; } = "";
         public bool IsAvailable { get; set; } = true;
 
 
+        [NotMapped]
+        public IEnumerable<IBookBorrowing> BookBorrowings => BookBookBorrowings;
+
+        public virtual ICollection<BookBorrowing> BookBookBorrowings { get; set; }
     }
 }

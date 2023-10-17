@@ -3,9 +3,13 @@ namespace BBCommon.Contracts
 {
     public interface IBookBorrowing
     {
-        IBook BorrowedBook { get; set; }
-        IBorrower Borrower { get; set; }
+        int Id { get; }
+        IBook BorrowedBook { get;}
+        int BookId { get; set; }
         DateTime BorrowingDate { get; set; }
         DateTime DueDate { get; set; }
+        string BorrowerName { get; set; }
+      
+
     }
 }

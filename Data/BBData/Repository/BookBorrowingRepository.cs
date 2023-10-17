@@ -5,10 +5,9 @@ using BBData.DB;
 using BBData.Model;
 using Microsoft.EntityFrameworkCore;
 
-
-namespace EmployeeCrud.Data.Repository
+namespace BBData.Repository
 {
-    public class BookBorrowingRepository : IRepository<IBook>
+    public class BookBorrowingRepository : IBookBorrowingRepository
     {
         private readonly BookBorrowingDBContext _context;
         public BookBorrowingRepository(BookBorrowingDBContext context)
@@ -16,21 +15,14 @@ namespace EmployeeCrud.Data.Repository
             this._context = context;
         }
 
-        public async Task<IEnumerable<IBook>> GetAll()
-        {
-            return await _context.Books.ToListAsync();
-        }
-        public async Task<IBook> GetById(int id)
-        {
-            return await _context.Books.FirstOrDefaultAsync(e => e.Id == id);
-        }
+        
 
-        public async Task<bool> Add(IBook book)
+        public async Task<bool> Add(IBookBorrowing bookBorrowing)
         {
             try
             {
                 var isSuccessed = false;           
-                _context.Books.Add(new Book(book));
+                _context.BookBorrowings.Add(new BookBorrowing(bookBorrowing));
                 int returnNumber = await _context.SaveChangesAsync();
                 if (returnNumber == 1)
                     isSuccessed = true;
@@ -69,6 +61,17 @@ namespace EmployeeCrud.Data.Repository
             if (returnNumber == 1)
                 isSuccessed = true;
             return isSuccessed;
+        }
+
+        public async Task<IBookBorrowing> GetById(int id)
+        {
+            return await _context.BookBorrowings.FirstOrDefaultAsync(e => e.Id == id);
+
+        }
+
+        public async Task<IEnumerable<IBookBorrowing>> GetAll()
+        {
+            return await _context.BookBorrowings.ToListAsync();
         }
     }
 }

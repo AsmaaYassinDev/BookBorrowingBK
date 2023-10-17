@@ -1,10 +1,10 @@
 ﻿using BBCommon.Contracts;
 
-namespace BBData.Model
+namespace BBBusiness.Model
 {
     public class NewInfoForBook : Book, INewInfoForIBook
     {
       public string Edition { get; set; } = "";
-    
+      
     }
 }

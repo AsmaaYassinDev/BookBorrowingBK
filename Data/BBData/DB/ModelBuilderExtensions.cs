@@ -1,4 +1,5 @@
 ﻿
+using BBData.Model;
 using Microsoft.EntityFrameworkCore;
 
 
@@ -9,23 +10,40 @@ namespace BBData.DB
     {
         public static void Seed(this ModelBuilder modelBuilder)
         {
-        //    modelBuilder.Entity<User>().HasData(
-        //        new User
-        //        {
-        //            Id = 1,
-        //            Name = "Admin",
-        //            Password = "Admin12345",
-        //            Role = "Admin"
-        //        }
-        //    );
-        //    modelBuilder.Entity<Employee>().HasData(
-        //        new Employee { Id = 1, FirstName = "Joe", LastName = "Moe", Phone = "123456", JobTitle = "teacher" },
-        //         new Employee { Id = 2, FirstName = "Ahmed", LastName = "Ibrahim", Phone = "12345", JobTitle = "Engineer" },
-        //        new Employee { Id = 3, FirstName = "Moe", LastName = "Joe", Phone = "123", JobTitle = "Engineer" },
-        //         new Employee { Id = 4, FirstName = "D", LastName = "F", Phone = "1246", JobTitle = "teacher" },
-        //          new Employee { Id = 5, FirstName = "E", LastName = "G", Phone = "9875", JobTitle = "Doctor" },
-        //       new Employee { Id = 6, FirstName = "R", LastName = "W", Phone = "65423", JobTitle = "Doctor" }
-        //    );
+            modelBuilder.Entity<Book>().HasData(
+                new Book
+                {
+                    Id=1,
+                    Title = "Techno Book1 ",
+                    IsAvailable = true,
+                    ISBN = "123435"
+
+                },
+                  new Book
+                  {
+                      Id = 2,
+                      Title = "Techno Book2 ",
+                      IsAvailable = true,
+                      ISBN = "123345"
+
+                  },
+                    new Book
+                    {
+                        Id = 3,
+                        Title = "Techno Book3 ",
+                        IsAvailable = true,
+                        ISBN = "123245"
+
+                    }
+            );
+            modelBuilder.Entity<Country>().HasData(
+
+                new Country { Id = 1, Name = "UEA", StartDay =DayOfWeek.Saturday, EndDay = DayOfWeek.Sunday},
+                 new Country { Id = 2, Name = "Egypt", StartDay = DayOfWeek.Friday, EndDay = DayOfWeek.Saturday },
+                new Country { Id = 3, Name = "India", StartDay = DayOfWeek.Saturday, EndDay = DayOfWeek.Sunday },
+                new Country { Id = 4, Name = "UK", StartDay = DayOfWeek.Saturday, EndDay = DayOfWeek.Sunday }
+                
+            );
         }
     }
 }

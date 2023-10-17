@@ -6,6 +6,7 @@
         string Title { get; set; }     
         string ISBN { get; set; }
         bool IsAvailable { get; set; }
+        IEnumerable<IBookBorrowing> BookBorrowings { get; }
 
     }
 }
